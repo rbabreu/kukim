@@ -1,0 +1,64 @@
+
+ROM used: 1233 (15%)
+          1233 (15%) including unused fragments
+
+          3 Average locations per line
+          24 Average locations per statement
+
+RAM used: 50 (14%) at main() level
+          79 (21%) worst case
+
+Stack used: 3 worst case (out of 6 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   91    52 100  pic_manipulador_INT.c
+  306     0   0  ..\..\..\..\..\..\Program Files\PICC\devices\16f877a.h
+----- -----
+  397    52 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0    274  22  12   857  7.1  trata_t1
+0     31   3   2             @ITOF
+0    119  10  13             @MULFF
+0    323  26  16             @ADDFF
+0     33   3   4             @SFTOI
+0    317  26  10  1203  7.8  MAIN
+0     21   2   5             @MUL1616
+0     62   5   6             @DIVS1616
+
+Program metrics:
+    Functions               2
+    Statements              52
+    Comments                83
+    Volume (V)              2387
+    Difficilty (D)          14.4
+    Effort to implement (E) 34362
+    Time to implement (T)   32 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   6
+    Maintainability (MI)    54
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-00034    49  0  
+00035-007FF  1180  815  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+
+THE FOLLOWING IS TEMPORARY FOR DIAGNOSTIC USE ONLY:
+
+    n1    n2    N1    N2   v(G)
+    15    64    75    61     3    trata_t1
+     0     1     0     0     0    @ITOF
+     0     1     0     0     0    @MULFF
+     0     1     0     0     0    @ADDFF
+     0     1     0     0     0    @SFTOI
+    16    84    99    82     3    MAIN
+     0     1     0     0     0    @MUL1616
+     0     1     0     0     0    @DIVS1616

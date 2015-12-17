@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project --><PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="Release\coldet.dll"/>
+    <OBJFILES value=" box.obj box_bld.obj coldet.obj coldet_bld.obj math3d.obj mytritri.obj sysdep.obj tritri.obj box.obj box_bld.obj coldet.obj coldet_bld.obj math3d.obj mytritri.obj sysdep.obj tritri.obj box.obj box_bld.obj coldet.obj coldet_bld.obj math3d.obj mytritri.obj sysdep.obj tritri.obj"/>
+    <RESFILES value=""/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES)"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <SPARELIBS value=""/>
+    <PACKAGES value=""/>
+    <PATHCPP value=".;.\;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;COLDET_EXPORTS;WIN32;_DEBUG;_WINDOWS;_MBCS;_USRDLL;COLDET_EXPORTS;WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;COLDET_EXPORTS"/>
+    <SYSDEFINES value="_NO_VCL;;_ASSERTE;NO_STRICT"/>
+    <MAINSOURCE value="coldet.bpf"/>
+    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\mfc;$(BCB)\include\atl;"/>
+    <LIBPATH value="$(BCB)\lib;$(RELEASELIBPATH);;$(BCB)\lib\psdk;$(DEBUGLIBPATH);$(RELEASELIBPATH);"/>
+    <WARNINGS value="-w-8026 -w-8027 -w-par"/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I$(BCB)\include"/>
+    <CFLAG1 value=" -q -tWM -w -x -O2 -c -tWD -VF  -v -Od"/>
+    <PFLAGS value="-N0Release"/>
+    <RFLAGS value="/l 0x409 /d &quot;NDEBUG&quot; /i$(BCB)\include;$(BCB)\include\mfc"/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value=" -q -Tpd -Gi -x -v"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0d32.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) ODBCCP32.LIB UUID.LIB import32.lib cw32mt.lib"/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=0
+
+[HistoryLists\hlLibraryPath]
+Count=0
+
+[HistoryLists\hlDebugSourcePath]
+Count=0
+
+[HistoryLists\hlConditionals]
+Count=
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+  </IDEOPTIONS>
+  <FILES>
+    
+  </FILES>
+</PROJECT>
+

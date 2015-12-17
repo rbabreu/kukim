@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="Manipulador.exe"/>
+    <OBJFILES value="Manipulador.obj GlSkel.obj funcmanip.obj Unit1.obj Unit2.obj math3d.obj 
+      box_bld.obj coldet.obj coldet_bld.obj box.obj mytritri.obj sysdep.obj 
+      tritri.obj Unit3.obj"/>
+    <RESFILES value="Manipulador.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) GlSkel.dfm Unit1.dfm Unit2.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="vclx.lib dclocx.lib bdertl.lib vcldb.lib dbrtl.lib vcl.lib rtl.lib"/>
+    <SPARELIBS value="rtl.lib vcl.lib dbrtl.lib vcldb.lib bdertl.lib dclocx.lib vclx.lib"/>
+    <PACKAGES value="rtl.bpi vcl.bpi vclx.bpi bcbsmp.bpi dbrtl.bpi vcldb.bpi adortl.bpi 
+      ibsmp.bpi bdertl.bpi vcldbx.bpi qrpt.bpi teeui.bpi teedb.bpi tee.bpi 
+      dss.bpi teeqr.bpi ibxpress.bpi dsnap.bpi vclie.bpi inetdb.bpi inet.bpi 
+      nmfast.bpi webdsnap.bpi bcbie.bpi dclocx.bpi bcb2kaxserver.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG"/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="Manipulador.cpp"/>
+    <INCLUDEPATH value="C:\BCB5\CBuilder5\Projects;$(BCB)\include;$(BCB)\include\vcl;..\Include\Gl"/>
+    <LIBPATH value="C:\BCB5\CBuilder5\Projects;C:\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-IC:\BCB5\CBuilder5\Projects -I$(BCB)\include -I$(BCB)\include\vcl 
+      -I..\Include\Gl -src_suffix cpp -D_DEBUG -boa"/>
+    <CFLAG1 value="-Od -H=D:\CBuilder6\Lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v 
+      -vi- -c -tW -tWM"/>
+    <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="Manipulador.cpp" FORMNAME="" UNITNAME="Manipulador" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Manipulador.res" FORMNAME="" UNITNAME="Manipulador" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="GlSkel.cpp" FORMNAME="base1" UNITNAME="GlSkel" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="funcmanip.cpp" FORMNAME="" UNITNAME="funcmanip" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Unit1.cpp" FORMNAME="Form1" UNITNAME="Unit1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Unit2.cpp" FORMNAME="Form2" UNITNAME="Unit2" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="math3d.obj" FORMNAME="" UNITNAME="math3d" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="box_bld.obj" FORMNAME="" UNITNAME="box_bld" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="coldet.obj" FORMNAME="" UNITNAME="coldet" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="coldet_bld.obj" FORMNAME="" UNITNAME="coldet_bld" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="box.obj" FORMNAME="" UNITNAME="box" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="mytritri.obj" FORMNAME="" UNITNAME="mytritri" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="sysdep.obj" FORMNAME="" UNITNAME="sysdep" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="tritri.obj" FORMNAME="" UNITNAME="tritri" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Unit3.cpp" FORMNAME="" UNITNAME="Unit3" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1046
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=5
+Item0=C:\BCB5\CBuilder5\Projects;$(BCB)\include;$(BCB)\include\vcl;..\Include\Gl
+Item1=C:\BCB5\CBuilder5\Projects\;$(BCB)\include;$(BCB)\include\vcl;..\Include\Gl
+Item2=$(BCB)\include;$(BCB)\include\vcl;..\Include\Gl
+Item3=$(BCB)\include;$(BCB)\include\vcl;C:\BCB5\Borland\CBuilder5\Include\Gl
+Item4=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=6
+Item0=C:\BCB5\CBuilder5\Projects;C:\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item1=C:\BCB5\CBuilder5\Projects\;C:\Lib\;$(BCB)\lib\obj;$(BCB)\lib
+Item2=C:\BCB5\CBuilder5\Projects;C:\Lib\;$(BCB)\lib\obj;$(BCB)\lib
+Item3=C:\Lib\;$(BCB)\lib\obj;$(BCB)\lib
+Item4=..\..\..\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item5=$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>

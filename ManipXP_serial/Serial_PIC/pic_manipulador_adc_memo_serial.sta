@@ -1,0 +1,42 @@
+
+ROM used: 1599 (20%)
+          1599 (20%) including unused fragments
+
+          3 Average locations per line
+          20 Average locations per statement
+
+RAM used: 44 (25%) at main() level
+          100 (57%) worst case
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  107    56  71  D:\Meus documentos\Renato ELT\OpenGL\ManipXP_serial\Serial_PIC\pic_manipulador_adc_memo_serial.c
+  304     0   0  D:\Arquivos de programas\PICC\devices\16f877a.h
+   75    23  17  D:\Arquivos de programas\PICC\drivers\24256.c
+----- -----
+  972   158 Total
+
+Page ROM  %  RAM  Functions:
+---- --- --- ---  ----------
+0     75   5   3  @I2C_READ_1_59_60_4000000
+0     79   5   1  @I2C_WRITE_1_59_60_4000000
+0      7   0   0  init_ext_eeprom
+0    348  22  10  trata_t1
+0     30   2   2  @ITOF
+0    118   7  13  @MULFF
+0    339  21  16  @ADDFF
+0     32   2   4  @SFTOI
+0    267  17   8  trata_botao
+0    156  10   4  main
+0     23   1   5  @MUL1616
+0     65   4   6  @DIVS1616
+
+ Segment   Used  Free
+---------  ----  ----
+00000-00003     4  0
+00004-0003B    56  0
+0003C-007FF  1539  449
+00800-00FFF     0  2048
+01000-017FF     0  2048
+01800-01FFF     0  2048
+

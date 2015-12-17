@@ -1,0 +1,650 @@
+CCS PCM C Compiler, Version 3.203, 16465
+
+               Filename: D:\Meus documentos\Renato ELT\OpenGL\ManipXP_serial\Serial_PIC\pic_manipulador_MSLS.LST
+
+               ROM used: 1128 words (14%)
+                         Largest free fragment is 2048
+               RAM used: 44 (25%) at main() level
+                         70 (40%) worst case
+               Stack:    2 worst case (0 in main + 2 for interrupts)
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   3E0
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  MOVF   7B,W
+0016:  MOVWF  27
+0017:  BCF    03.7
+0018:  BCF    03.5
+0019:  MOVLW  8C
+001A:  MOVWF  04
+001B:  BTFSS  00.0
+001C:  GOTO   01F
+001D:  BTFSC  0C.0
+001E:  GOTO   032
+001F:  MOVF   22,W
+0020:  MOVWF  04
+0021:  MOVF   23,W
+0022:  MOVWF  77
+0023:  MOVF   24,W
+0024:  MOVWF  78
+0025:  MOVF   25,W
+0026:  MOVWF  79
+0027:  MOVF   26,W
+0028:  MOVWF  7A
+0029:  MOVF   27,W
+002A:  MOVWF  7B
+002B:  MOVF   20,W
+002C:  MOVWF  0A
+002D:  SWAPF  21,W
+002E:  MOVWF  03
+002F:  SWAPF  7F,F
+0030:  SWAPF  7F,W
+0031:  RETFIE
+0032:  BCF    0A.3
+0033:  BCF    0A.4
+0034:  GOTO   288
+....................  #include <16f877a.h> 
+....................  //////// Standard Header file for the PIC16F877A device ////////////////  
+.................... #device PIC16F877A  
+.................... #list  
+....................  
+.................... #device ADC=10  //NECESSÁRIO PARA HABILITAR CONVERSÃO EM 10 BITS  
+.................... #fuses HS,NOWDT,PUT,NOBROWNOUT,NOLVP  
+.................... #use delay(clock=4000000)  
+.................... #use rs232(baud=19200, xmit=PIN_C6, rcv=PIN_C7)  
+....................   
+.................... #define SWITCH_RS_AD PIN_B1  
+.................... #define LED_1 PIN_C2  
+....................   
+.................... char valor;  
+.................... signed long valorint;  
+.................... long temp;    
+.................... int i=0;  
+*
+03F3:  CLRF   2D
+.................... int j, k;  
+.................... long angulos[7] = {1500, 1500, 1500, 1500, 1500, 1500, 1500};  
+03F4:  MOVLW  DC
+03F5:  MOVWF  30
+03F6:  MOVLW  05
+03F7:  MOVWF  31
+03F8:  MOVLW  DC
+03F9:  MOVWF  32
+03FA:  MOVLW  05
+03FB:  MOVWF  33
+03FC:  MOVLW  DC
+03FD:  MOVWF  34
+03FE:  MOVLW  05
+03FF:  MOVWF  35
+0400:  MOVLW  DC
+0401:  MOVWF  36
+0402:  MOVLW  05
+0403:  MOVWF  37
+0404:  MOVLW  DC
+0405:  MOVWF  38
+0406:  MOVLW  05
+0407:  MOVWF  39
+0408:  MOVLW  DC
+0409:  MOVWF  3A
+040A:  MOVLW  05
+040B:  MOVWF  3B
+040C:  MOVLW  DC
+040D:  MOVWF  3C
+040E:  MOVLW  05
+040F:  MOVWF  3D
+.................... long soma_angulos = 0;  
+0410:  CLRF   3E
+0411:  CLRF   3F
+.................... int output = 0b00000000;  
+0412:  CLRF   40
+.................... int Byte_array[] = {0, 0};  
+0413:  CLRF   41
+0414:  CLRF   42
+....................   
+....................   
+.................... //#INT_RDA  
+.................... void trata_rs232(){  
+....................    //////// ENVIA ANGULOS POR RS232 CASO CHAVE DESLIGADA ////////  
+....................    signed long ang;  
+....................    int n, m;  
+....................    n = getc();  
+*
+0393:  BTFSS  0C.5
+0394:  GOTO   393
+0395:  MOVF   1A,W
+0396:  MOVWF  49
+....................    ang = (signed long)(angulos[n-1]-1500)*2/15;//+120;  
+0397:  MOVLW  01
+0398:  SUBWF  49,W
+0399:  MOVWF  77
+039A:  BCF    03.0
+039B:  RLF    77,F
+039C:  MOVF   77,W
+039D:  ADDLW  30
+039E:  MOVWF  04
+039F:  INCF   04,F
+03A0:  MOVF   00,W
+03A1:  MOVWF  4D
+03A2:  DECF   04,F
+03A3:  MOVF   00,W
+03A4:  MOVWF  4C
+03A5:  MOVLW  DC
+03A6:  SUBWF  4C,W
+03A7:  MOVWF  4E
+03A8:  MOVF   4D,W
+03A9:  MOVWF  4F
+03AA:  MOVLW  05
+03AB:  BTFSS  03.0
+03AC:  MOVLW  06
+03AD:  SUBWF  4F,F
+03AE:  MOVF   4F,W
+03AF:  MOVWF  51
+03B0:  MOVF   4E,W
+03B1:  MOVWF  50
+03B2:  CLRF   53
+03B3:  MOVLW  02
+03B4:  MOVWF  52
+03B5:  GOTO   230
+03B6:  MOVF   79,W
+03B7:  MOVWF  50
+03B8:  MOVF   78,W
+03B9:  MOVWF  4F
+03BA:  MOVF   79,W
+03BB:  MOVWF  52
+03BC:  MOVF   78,W
+03BD:  MOVWF  51
+03BE:  CLRF   54
+03BF:  MOVLW  0F
+03C0:  MOVWF  53
+03C1:  GOTO   247
+03C2:  MOVF   79,W
+03C3:  MOVWF  48
+03C4:  MOVF   78,W
+03C5:  MOVWF  47
+....................    for (m = 0; m < 2; m++){ //TRANSMITE A VARIAVEL DE 16 BITS EM 2 VEZES DE 8  
+03C6:  CLRF   4A
+03C7:  MOVF   4A,W
+03C8:  SUBLW  01
+03C9:  BTFSS  03.0
+03CA:  GOTO   3D6
+....................       putc(*(&ang + m));  
+03CB:  MOVLW  47
+03CC:  ADDWF  4A,W
+03CD:  MOVWF  04
+03CE:  MOVF   00,W
+03CF:  MOVWF  4B
+03D0:  MOVF   4B,W
+03D1:  BTFSS  0C.4
+03D2:  GOTO   3D1
+03D3:  MOVWF  19
+....................    }  
+03D4:  INCF   4A,F
+03D5:  GOTO   3C7
+.................... }  
+....................   
+.................... #int_timer1  
+.................... void trata_t1() {  
+....................    ////////////////// FAZ PULSO ALTO ///////////////////  
+....................    bit_clear(output, i);  
+*
+0288:  MOVLW  01
+0289:  MOVWF  77
+028A:  MOVF   2D,W
+028B:  MOVWF  78
+028C:  BTFSC  03.2
+028D:  GOTO   292
+028E:  BCF    03.0
+028F:  RLF    77,F
+0290:  DECFSZ 78,F
+0291:  GOTO   28E
+0292:  MOVF   77,W
+0293:  XORLW  FF
+0294:  ANDWF  40,F
+....................    output_d(output);  
+0295:  MOVLW  00
+0296:  BSF    03.5
+0297:  MOVWF  08
+0298:  BCF    03.5
+0299:  MOVF   40,W
+029A:  MOVWF  08
+....................    if(i<7){  
+029B:  MOVF   2D,W
+029C:  SUBLW  06
+029D:  BTFSS  03.0
+029E:  GOTO   2D6
+....................       ++i;  
+029F:  INCF   2D,F
+....................       bit_set(output, i);  
+02A0:  MOVLW  01
+02A1:  MOVWF  77
+02A2:  MOVF   2D,W
+02A3:  MOVWF  78
+02A4:  BTFSC  03.2
+02A5:  GOTO   2AA
+02A6:  BCF    03.0
+02A7:  RLF    77,F
+02A8:  DECFSZ 78,F
+02A9:  GOTO   2A6
+02AA:  MOVF   77,W
+02AB:  IORWF  40,F
+....................       output_d(output);  
+02AC:  MOVLW  00
+02AD:  BSF    03.5
+02AE:  MOVWF  08
+02AF:  BCF    03.5
+02B0:  MOVF   40,W
+02B1:  MOVWF  08
+....................       set_timer1(65536-angulos[i-1]);  
+02B2:  MOVLW  01
+02B3:  SUBWF  2D,W
+02B4:  MOVWF  77
+02B5:  BCF    03.0
+02B6:  RLF    77,F
+02B7:  MOVF   77,W
+02B8:  ADDLW  30
+02B9:  MOVWF  04
+02BA:  INCF   04,F
+02BB:  MOVF   00,W
+02BC:  MOVWF  7A
+02BD:  DECF   04,F
+02BE:  MOVF   00,W
+02BF:  SUBLW  00
+02C0:  MOVWF  48
+02C1:  CLRF   49
+02C2:  MOVF   7A,W
+02C3:  BTFSS  03.0
+02C4:  INCFSZ 7A,W
+02C5:  SUBWF  49,F
+02C6:  MOVLW  01
+02C7:  MOVWF  4A
+02C8:  MOVLW  00
+02C9:  BTFSS  03.0
+02CA:  MOVLW  01
+02CB:  SUBWF  4A,F
+02CC:  CLRF   4B
+02CD:  MOVLW  00
+02CE:  BTFSS  03.0
+02CF:  MOVLW  01
+02D0:  SUBWF  4B,F
+02D1:  MOVF   49,W
+02D2:  MOVWF  0F
+02D3:  MOVF   48,W
+02D4:  MOVWF  0E
+....................    }else{  
+02D5:  GOTO   3DC
+....................       ///////////// FAZ DELAY DE TEMPO BAIXO //////////////  
+....................       i=0;  
+02D6:  CLRF   2D
+....................       output=0;  
+02D7:  CLRF   40
+....................       output_d(output);  
+02D8:  MOVLW  00
+02D9:  BSF    03.5
+02DA:  MOVWF  08
+02DB:  BCF    03.5
+02DC:  MOVF   40,W
+02DD:  MOVWF  08
+....................       set_timer1(41736+soma_angulos); //set_timer1(55536);  
+02DE:  MOVLW  08
+02DF:  ADDWF  3E,W
+02E0:  MOVWF  47
+02E1:  MOVF   3F,W
+02E2:  MOVWF  48
+02E3:  BTFSC  03.0
+02E4:  INCF   48,F
+02E5:  MOVLW  A3
+02E6:  ADDWF  48,F
+02E7:  MOVF   48,W
+02E8:  MOVWF  0F
+02E9:  MOVF   47,W
+02EA:  MOVWF  0E
+....................       if(!input(SWITCH_RS_AD)){  
+02EB:  BSF    03.5
+02EC:  BSF    06.1
+02ED:  BCF    03.5
+02EE:  BTFSC  06.1
+02EF:  GOTO   3DC
+....................          //////////// FAZ AQUISIÇÃO CASO CHAVE DESLIGADA //////////////  
+....................          for (k = 0; k < 7; ++k){  
+02F0:  CLRF   2F
+02F1:  MOVF   2F,W
+02F2:  SUBLW  06
+02F3:  BTFSS  03.0
+02F4:  GOTO   35B
+....................             set_adc_channel( k );  
+02F5:  RLF    2F,W
+02F6:  MOVWF  77
+02F7:  RLF    77,F
+02F8:  RLF    77,F
+02F9:  MOVLW  F8
+02FA:  ANDWF  77,F
+02FB:  MOVF   1F,W
+02FC:  ANDLW  C7
+02FD:  IORWF  77,W
+02FE:  MOVWF  1F
+....................             delay_us(20);  
+02FF:  MOVLW  06
+0300:  MOVWF  77
+0301:  DECFSZ 77,F
+0302:  GOTO   301
+0303:  NOP
+....................             temp = read_adc();  
+0304:  BSF    1F.2
+0305:  BTFSC  1F.2
+0306:  GOTO   305
+0307:  BSF    03.5
+0308:  MOVF   1E,W
+0309:  BCF    03.5
+030A:  MOVWF  2B
+030B:  MOVF   1E,W
+030C:  MOVWF  2C
+....................             angulos[k] = (float)temp*1.7595+600; //angulos[k] = temp*2+500;  
+030D:  BCF    03.0
+030E:  RLF    2F,W
+030F:  ADDLW  30
+0310:  MOVWF  04
+0311:  MOVF   2C,W
+0312:  MOVWF  49
+0313:  MOVF   2B,W
+0314:  MOVWF  48
+0315:  GOTO   035
+0316:  MOVF   77,W
+0317:  MOVWF  48
+0318:  MOVF   78,W
+0319:  MOVWF  49
+031A:  MOVF   79,W
+031B:  MOVWF  4A
+031C:  MOVF   7A,W
+031D:  MOVWF  4B
+031E:  MOVWF  4F
+031F:  MOVF   79,W
+0320:  MOVWF  4E
+0321:  MOVF   78,W
+0322:  MOVWF  4D
+0323:  MOVF   77,W
+0324:  MOVWF  4C
+0325:  MOVLW  4C
+0326:  MOVWF  53
+0327:  MOVLW  37
+0328:  MOVWF  52
+0329:  MOVLW  61
+032A:  MOVWF  51
+032B:  MOVLW  7F
+032C:  MOVWF  50
+032D:  GOTO   055
+032E:  MOVF   77,W
+032F:  MOVWF  4C
+0330:  MOVF   78,W
+0331:  MOVWF  4D
+0332:  MOVF   79,W
+0333:  MOVWF  4E
+0334:  MOVF   7A,W
+0335:  MOVWF  4F
+0336:  MOVF   04,W
+0337:  MOVWF  50
+0338:  BCF    03.1
+0339:  MOVF   7A,W
+033A:  MOVWF  54
+033B:  MOVF   79,W
+033C:  MOVWF  53
+033D:  MOVF   78,W
+033E:  MOVWF  52
+033F:  MOVF   77,W
+0340:  MOVWF  51
+0341:  CLRF   58
+0342:  CLRF   57
+0343:  MOVLW  16
+0344:  MOVWF  56
+0345:  MOVLW  88
+0346:  MOVWF  55
+0347:  GOTO   0CD
+0348:  MOVF   50,W
+0349:  MOVWF  04
+034A:  MOVF   7A,W
+034B:  MOVWF  54
+034C:  MOVF   79,W
+034D:  MOVWF  53
+034E:  MOVF   78,W
+034F:  MOVWF  52
+0350:  MOVF   77,W
+0351:  MOVWF  51
+0352:  GOTO   20E
+0353:  INCF   04,F
+0354:  MOVF   79,W
+0355:  MOVWF  00
+0356:  DECF   04,F
+0357:  MOVF   78,W
+0358:  MOVWF  00
+....................          }  
+0359:  INCF   2F,F
+035A:  GOTO   2F1
+....................          soma_angulos = angulos[0]+angulos[1]+angulos[2]+angulos[3]  
+....................                +angulos[4]+angulos[5]+angulos[6];  
+035B:  MOVF   32,W
+035C:  ADDWF  30,W
+035D:  MOVWF  47
+035E:  MOVF   31,W
+035F:  MOVWF  48
+0360:  BTFSC  03.0
+0361:  INCF   48,F
+0362:  MOVF   33,W
+0363:  ADDWF  48,F
+0364:  MOVF   34,W
+0365:  ADDWF  47,W
+0366:  MOVWF  49
+0367:  MOVF   48,W
+0368:  MOVWF  4A
+0369:  BTFSC  03.0
+036A:  INCF   4A,F
+036B:  MOVF   35,W
+036C:  ADDWF  4A,F
+036D:  MOVF   36,W
+036E:  ADDWF  49,W
+036F:  MOVWF  4B
+0370:  MOVF   4A,W
+0371:  MOVWF  4C
+0372:  BTFSC  03.0
+0373:  INCF   4C,F
+0374:  MOVF   37,W
+0375:  ADDWF  4C,F
+0376:  MOVF   38,W
+0377:  ADDWF  4B,W
+0378:  MOVWF  4D
+0379:  MOVF   4C,W
+037A:  MOVWF  4E
+037B:  BTFSC  03.0
+037C:  INCF   4E,F
+037D:  MOVF   39,W
+037E:  ADDWF  4E,F
+037F:  MOVF   3A,W
+0380:  ADDWF  4D,W
+0381:  MOVWF  4F
+0382:  MOVF   4E,W
+0383:  MOVWF  50
+0384:  BTFSC  03.0
+0385:  INCF   50,F
+0386:  MOVF   3B,W
+0387:  ADDWF  50,F
+0388:  MOVF   3C,W
+0389:  ADDWF  4F,W
+038A:  MOVWF  3E
+038B:  MOVF   50,W
+038C:  MOVWF  3F
+038D:  BTFSC  03.0
+038E:  INCF   3F,F
+038F:  MOVF   3D,W
+0390:  ADDWF  3F,F
+....................          if(kbhit()){  
+0391:  BTFSS  0C.5
+0392:  GOTO   3D6
+....................             trata_rs232();  
+....................          }  
+....................          output_low(LED_1);  
+*
+03D6:  BCF    43.2
+03D7:  MOVF   43,W
+03D8:  BSF    03.5
+03D9:  MOVWF  07
+03DA:  BCF    03.5
+03DB:  BCF    07.2
+*
+0415:  MOVLW  FF
+0416:  MOVWF  43
+....................       }  
+....................    }  
+.................... }  
+....................   
+....................   
+*
+03DC:  BCF    0C.0
+03DD:  BCF    0A.3
+03DE:  BCF    0A.4
+03DF:  GOTO   01F
+.................... void main() {  
+....................    set_tris_a(0b11111111);  
+03E0:  CLRF   04
+03E1:  MOVLW  1F
+03E2:  ANDWF  03,F
+03E3:  BSF    03.5
+03E4:  BSF    1F.0
+03E5:  BSF    1F.1
+03E6:  BSF    1F.2
+03E7:  BCF    1F.3
+03E8:  MOVLW  07
+03E9:  BCF    03.5
+03EA:  MOVWF  1F
+03EB:  MOVLW  0C
+03EC:  BSF    03.5
+03ED:  MOVWF  19
+03EE:  MOVLW  26
+03EF:  MOVWF  18
+03F0:  MOVLW  90
+03F1:  BCF    03.5
+03F2:  MOVWF  18
+*
+0417:  MOVLW  FF
+0418:  BSF    03.5
+0419:  MOVWF  05
+....................    set_tris_d(0b00000000);  
+041A:  MOVLW  00
+041B:  MOVWF  08
+....................    setup_port_a( ALL_ANALOG );  
+041C:  BCF    1F.0
+041D:  BCF    1F.1
+041E:  BCF    1F.2
+041F:  BCF    1F.3
+....................    setup_adc( ADC_CLOCK_DIV_16 );  
+0420:  BSF    1F.6
+0421:  BCF    03.5
+0422:  BSF    1F.6
+0423:  BCF    1F.7
+0424:  BSF    03.5
+0425:  BSF    1F.7
+0426:  BCF    03.5
+0427:  BSF    1F.0
+....................   
+....................    setup_timer_1 ( T1_INTERNAL | T1_DIV_BY_1 );  
+0428:  MOVLW  85
+0429:  MOVWF  10
+....................    enable_interrupts (global);  
+042A:  MOVLW  C0
+042B:  IORWF  0B,F
+....................    enable_interrupts (int_timer1);  
+042C:  BSF    03.5
+042D:  BSF    0C.0
+....................    set_timer1(0);  
+042E:  BCF    03.5
+042F:  CLRF   0F
+0430:  CLRF   0E
+....................   
+....................    while (true){  
+....................       output_high(LED_1);  
+0431:  BCF    43.2
+0432:  MOVF   43,W
+0433:  BSF    03.5
+0434:  MOVWF  07
+0435:  BCF    03.5
+0436:  BSF    07.2
+....................       if(input(SWITCH_RS_AD)){  
+0437:  BSF    03.5
+0438:  BSF    06.1
+0439:  BCF    03.5
+043A:  BTFSS  06.1
+043B:  GOTO   466
+....................          //////// RECEBE ANGULOS POR RS232 CASO CHAVE LIGADA ////////  
+....................          for (j = 0; j < 7; ++j){  
+043C:  CLRF   2E
+043D:  MOVF   2E,W
+043E:  SUBLW  06
+043F:  BTFSS  03.0
+0440:  GOTO   466
+....................             putc(j+1);  
+0441:  MOVLW  01
+0442:  ADDWF  2E,W
+0443:  MOVWF  44
+0444:  MOVF   44,W
+0445:  BTFSS  0C.4
+0446:  GOTO   445
+0447:  MOVWF  19
+....................             Byte_array[1] = getc();  //MS  
+0448:  BTFSS  0C.5
+0449:  GOTO   448
+044A:  MOVF   1A,W
+044B:  MOVWF  42
+....................             Byte_array[0] = getc();  //LS  
+044C:  BTFSS  0C.5
+044D:  GOTO   44C
+044E:  MOVF   1A,W
+044F:  MOVWF  41
+....................             angulos[j] = *(long *)Byte_array;  
+0450:  BCF    03.0
+0451:  RLF    2E,W
+0452:  ADDLW  30
+0453:  MOVWF  44
+0454:  MOVLW  41
+0455:  MOVWF  04
+0456:  INCF   04,F
+0457:  MOVF   00,W
+0458:  MOVWF  7A
+0459:  DECF   04,F
+045A:  MOVF   00,W
+045B:  MOVWF  45
+045C:  MOVF   44,W
+045D:  MOVWF  04
+045E:  INCF   04,F
+045F:  MOVF   7A,W
+0460:  MOVWF  00
+0461:  DECF   04,F
+0462:  MOVF   45,W
+0463:  MOVWF  00
+....................          }  
+0464:  INCF   2E,F
+0465:  GOTO   43D
+....................       }  
+....................    }  
+0466:  GOTO   431
+.................... }  
+....................  
+0467:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F32   HS NOWDT PUT NODEBUG NOPROTECT NOBROWNOUT NOLVP NOCPD NOWRT

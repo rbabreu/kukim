@@ -1,0 +1,44 @@
+[PROJECT]
+Target=pic_manipulador_INT.HEX
+Development_Mode=2
+Processor=0x877A
+ToolSuite=CCS
+Processor_Text=PIC16F877A
+
+[Directories]
+Include=
+Library=
+LinkerScript=
+
+[Target Data]
+FileList=C:\Users\Renato\Documents\Renato ELT\ManipXP_serial\Serial_PIC\pic_manipulador_INT.c
+BuildTool=C-COMPILER
+OptionString=+FM
+AdditionalOptionString=
+BuildRequired=1
+
+[pic_manipulador_INT.c]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[mru-list]
+1=D:\MEUSDO~1\RENATO~1\OpenGL\MANIPX~1\SERIAL~1\PIAF29~1.C
+
+[Windows]
+0=0000 D:\MEUSDO~1\RENATO~1\OpenGL\MANIPX~1\SERIAL~1\PIAF29~1.C 0 0 796 451 3 0
+
+[Opened Files]
+1=C:\Users\Renato\Documents\Renato ELT\ManipXP_serial\Serial_PIC\pic_manipulador_INT.c
+2=
+3=
+4=D:\Meus documentos\Renato ELT\PIC_robos\C-RComAccessAPI_rs232\SerialCom_Renato\Projeto_Intec\pic_serial.c
+5=D:\Arquivos de programas\PICC\Devices\16F877A.h
+6=
+[Units]
+Count=1
+1=pic_manipulador_INT.c (main)
+Link=0

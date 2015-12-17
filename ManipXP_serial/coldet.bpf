@@ -1,0 +1,11 @@
+USEUNIT(".\box.cpp");
+USEUNIT(".\box_bld.cpp");
+USEUNIT(".\coldet.cpp");
+USEUNIT(".\coldet_bld.cpp");
+USEUNIT(".\math3d.cpp");
+USEUNIT(".\mytritri.cpp");
+USEUNIT(".\sysdep.cpp");
+USEUNIT(".\tritri.c");
+USEFILE("vctobpr.log");
+
+#define DllEntryPoint

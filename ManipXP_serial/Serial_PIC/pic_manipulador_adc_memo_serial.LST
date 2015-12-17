@@ -1,0 +1,1207 @@
+CCS PCM C Compiler, Version 3.203, 16465
+
+               Filename: D:\Meus documentos\Renato ELT\OpenGL\ManipXP_serial\Serial_PIC\pic_manipulador_adc_memo_serial.LST
+
+               ROM used: 1599 words (20%)
+                         Largest free fragment is 2048
+               RAM used: 44 (25%) at main() level
+                         100 (57%) worst case
+               Stack:    3 worst case (1 in main + 2 for interrupts)
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   5A3
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  MOVF   7B,W
+0016:  MOVWF  27
+0017:  BCF    03.7
+0018:  BCF    03.5
+0019:  BTFSS  0B.4
+001A:  GOTO   01D
+001B:  BTFSC  0B.1
+001C:  GOTO   036
+001D:  MOVLW  8C
+001E:  MOVWF  04
+001F:  BTFSS  00.0
+0020:  GOTO   023
+0021:  BTFSC  0C.0
+0022:  GOTO   039
+0023:  MOVF   22,W
+0024:  MOVWF  04
+0025:  MOVF   23,W
+0026:  MOVWF  77
+0027:  MOVF   24,W
+0028:  MOVWF  78
+0029:  MOVF   25,W
+002A:  MOVWF  79
+002B:  MOVF   26,W
+002C:  MOVWF  7A
+002D:  MOVF   27,W
+002E:  MOVWF  7B
+002F:  MOVF   20,W
+0030:  MOVWF  0A
+0031:  SWAPF  21,W
+0032:  MOVWF  03
+0033:  SWAPF  7F,F
+0034:  SWAPF  7F,W
+0035:  RETFIE
+0036:  BCF    0A.3
+0037:  BCF    0A.4
+0038:  GOTO   439
+0039:  BCF    0A.3
+003A:  BCF    0A.4
+003B:  GOTO   2DD
+....................  #include <16f877a.h> 
+....................  //////// Standard Header file for the PIC16F877A device ////////////////  
+.................... #device PIC16F877A  
+.................... #list  
+....................  
+.................... #device ADC=10  //NECESSÁRIO PARA HABILITAR CONVERSÃO EM 10 BITS  
+.................... #fuses HS,NOWDT,PUT,NOBROWNOUT,NOLVP  
+.................... #use delay(clock=4000000)  
+.................... #use rs232(baud=19200, xmit=PIN_C6, rcv=PIN_C7)  
+.................... #include <24256.c> 
+....................  ///////////////////////////////////////////////////////////////////////////  
+.................... ////   Library for a 24LC256 serial EEPROM                             ////  
+.................... ////                                                                   ////  
+.................... ////   init_ext_eeprom();    Call before the other functions are used  ////  
+.................... ////                                                                   ////  
+.................... ////   write_ext_eeprom(a, d);  Write the byte d to the address a      ////  
+.................... ////                                                                   ////  
+.................... ////   d = read_ext_eeprom(a);   Read the byte d from the address a    ////  
+.................... ////                                                                   ////  
+.................... ////   The main program may define eeprom_sda                          ////  
+.................... ////   and eeprom_scl to override the defaults below.                  ////  
+.................... ////                                                                   ////  
+.................... ///////////////////////////////////////////////////////////////////////////  
+.................... ////        (C) Copyright 1996,2003 Custom Computer Services           ////  
+.................... //// This source code may only be used by licensed users of the CCS C  ////  
+.................... //// compiler.  This source code may only be distributed to other      ////  
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////  
+.................... //// or distribution is permitted without written permission.          ////  
+.................... //// Derivative programs created using this software in object code    ////  
+.................... //// form are not restricted in any way.                               ////  
+.................... ///////////////////////////////////////////////////////////////////////////  
+....................   
+....................   
+.................... #ifndef EEPROM_SDA  
+....................   
+.................... #define EEPROM_SDA  PIN_C4  
+.................... #define EEPROM_SCL  PIN_C3  
+....................   
+.................... #endif  
+....................   
+.................... #use i2c(master, sda=EEPROM_SDA, scl=EEPROM_SCL)  
+*
+0243:  MOVLW  08
+0244:  MOVWF  78
+0245:  NOP
+0246:  NOP
+0247:  BCF    07.3
+0248:  BCF    28.3
+0249:  MOVF   28,W
+024A:  BSF    03.5
+024B:  MOVWF  07
+024C:  NOP
+024D:  RLF    74,F
+024E:  BCF    03.5
+024F:  BCF    07.4
+0250:  BTFSS  03.0
+0251:  GOTO   258
+0252:  BSF    28.4
+0253:  MOVF   28,W
+0254:  BSF    03.5
+0255:  MOVWF  07
+0256:  GOTO   25C
+0257:  BCF    03.5
+0258:  BCF    28.4
+0259:  MOVF   28,W
+025A:  BSF    03.5
+025B:  MOVWF  07
+025C:  NOP
+025D:  BCF    03.5
+025E:  BSF    28.3
+025F:  MOVF   28,W
+0260:  BSF    03.5
+0261:  MOVWF  07
+0262:  BCF    03.5
+0263:  BTFSC  07.3
+0264:  GOTO   267
+0265:  BSF    03.5
+0266:  GOTO   262
+0267:  DECFSZ 78,F
+0268:  GOTO   245
+0269:  NOP
+026A:  BCF    07.3
+026B:  BCF    28.3
+026C:  MOVF   28,W
+026D:  BSF    03.5
+026E:  MOVWF  07
+026F:  NOP
+0270:  BCF    03.5
+0271:  BSF    28.4
+0272:  MOVF   28,W
+0273:  BSF    03.5
+0274:  MOVWF  07
+0275:  NOP
+0276:  NOP
+0277:  BCF    03.5
+0278:  BSF    28.3
+0279:  MOVF   28,W
+027A:  BSF    03.5
+027B:  MOVWF  07
+027C:  BCF    03.5
+027D:  BTFSC  07.3
+027E:  GOTO   281
+027F:  BSF    03.5
+0280:  GOTO   27C
+0281:  CLRF   78
+0282:  NOP
+0283:  BTFSC  07.4
+0284:  BSF    78.0
+0285:  BCF    07.3
+0286:  BCF    28.3
+0287:  MOVF   28,W
+0288:  BSF    03.5
+0289:  MOVWF  07
+028A:  BCF    03.5
+028B:  BCF    07.4
+028C:  BCF    28.4
+028D:  MOVF   28,W
+028E:  BSF    03.5
+028F:  MOVWF  07
+0290:  BCF    03.5
+0291:  RETLW  00
+0292:  MOVLW  08
+0293:  MOVWF  58
+0294:  MOVF   77,W
+0295:  MOVWF  59
+0296:  BSF    28.4
+0297:  MOVF   28,W
+0298:  BSF    03.5
+0299:  MOVWF  07
+029A:  NOP
+029B:  BCF    03.5
+029C:  BSF    28.3
+029D:  MOVF   28,W
+029E:  BSF    03.5
+029F:  MOVWF  07
+02A0:  BCF    03.5
+02A1:  BTFSC  07.3
+02A2:  GOTO   2A5
+02A3:  BSF    03.5
+02A4:  GOTO   2A0
+02A5:  BTFSC  07.4
+02A6:  BSF    03.0
+02A7:  BTFSS  07.4
+02A8:  BCF    03.0
+02A9:  RLF    78,F
+02AA:  NOP
+02AB:  BCF    28.3
+02AC:  MOVF   28,W
+02AD:  BSF    03.5
+02AE:  MOVWF  07
+02AF:  BCF    03.5
+02B0:  BCF    07.3
+02B1:  DECFSZ 58,F
+02B2:  GOTO   296
+02B3:  BSF    28.4
+02B4:  MOVF   28,W
+02B5:  BSF    03.5
+02B6:  MOVWF  07
+02B7:  NOP
+02B8:  BCF    03.5
+02B9:  BCF    07.4
+02BA:  MOVF   59,W
+02BB:  BTFSC  03.2
+02BC:  GOTO   2C2
+02BD:  BCF    28.4
+02BE:  MOVF   28,W
+02BF:  BSF    03.5
+02C0:  MOVWF  07
+02C1:  BCF    03.5
+02C2:  NOP
+02C3:  BSF    28.3
+02C4:  MOVF   28,W
+02C5:  BSF    03.5
+02C6:  MOVWF  07
+02C7:  BCF    03.5
+02C8:  BTFSC  07.3
+02C9:  GOTO   2CC
+02CA:  BSF    03.5
+02CB:  GOTO   2C7
+02CC:  NOP
+02CD:  BCF    07.3
+02CE:  BCF    28.3
+02CF:  MOVF   28,W
+02D0:  BSF    03.5
+02D1:  MOVWF  07
+02D2:  NOP
+02D3:  BCF    03.5
+02D4:  BCF    07.4
+02D5:  BCF    28.4
+02D6:  MOVF   28,W
+02D7:  BSF    03.5
+02D8:  MOVWF  07
+02D9:  BCF    03.5
+02DA:  BCF    0A.3
+02DB:  BCF    0A.4
+02DC:  GOTO   40A (RETURN)
+*
+05B6:  MOVLW  FF
+05B7:  MOVWF  28
+....................   
+.................... #define EEPROM_ADDRESS long int  
+.................... #define EEPROM_SIZE   32768  
+....................   
+.................... void init_ext_eeprom()  
+.................... {  
+....................    output_float(EEPROM_SCL);  
+*
+0544:  BSF    03.5
+0545:  BSF    07.3
+....................    output_float(EEPROM_SDA);  
+0546:  BSF    07.4
+....................   
+.................... }  
+0547:  BCF    03.5
+0548:  BCF    0A.3
+0549:  BCF    0A.4
+054A:  GOTO   5EF (RETURN)
+....................   
+....................   
+.................... void write_ext_eeprom(long int address, BYTE data)  
+.................... {  
+....................    short int status;  
+....................    i2c_start();  
+*
+04B2:  BSF    28.4
+04B3:  MOVF   28,W
+04B4:  BSF    03.5
+04B5:  MOVWF  07
+04B6:  NOP
+04B7:  BCF    03.5
+04B8:  BSF    28.3
+04B9:  MOVF   28,W
+04BA:  BSF    03.5
+04BB:  MOVWF  07
+04BC:  NOP
+04BD:  BCF    03.5
+04BE:  BCF    07.4
+04BF:  BCF    28.4
+04C0:  MOVF   28,W
+04C1:  BSF    03.5
+04C2:  MOVWF  07
+04C3:  NOP
+04C4:  BCF    03.5
+04C5:  BCF    07.3
+04C6:  BCF    28.3
+04C7:  MOVF   28,W
+04C8:  BSF    03.5
+04C9:  MOVWF  07
+....................    i2c_write(0xa0);  
+04CA:  MOVLW  A0
+04CB:  MOVWF  74
+04CC:  BCF    03.5
+04CD:  CALL   243
+....................    i2c_write(address>>8);  
+04CE:  MOVF   6F,W
+04CF:  MOVWF  72
+04D0:  CLRF   73
+04D1:  MOVF   6F,W
+04D2:  MOVWF  74
+04D3:  CALL   243
+....................    i2c_write(address);  
+04D4:  MOVF   6E,W
+04D5:  MOVWF  74
+04D6:  CALL   243
+....................    i2c_write(data);  
+04D7:  MOVF   70,W
+04D8:  MOVWF  74
+04D9:  CALL   243
+....................    i2c_stop();  
+04DA:  BCF    28.4
+04DB:  MOVF   28,W
+04DC:  BSF    03.5
+04DD:  MOVWF  07
+04DE:  NOP
+04DF:  BCF    03.5
+04E0:  BSF    28.3
+04E1:  MOVF   28,W
+04E2:  BSF    03.5
+04E3:  MOVWF  07
+04E4:  BCF    03.5
+04E5:  BTFSC  07.3
+04E6:  GOTO   4E9
+04E7:  BSF    03.5
+04E8:  GOTO   4E4
+04E9:  NOP
+04EA:  NOP
+04EB:  NOP
+04EC:  NOP
+04ED:  BSF    28.4
+04EE:  MOVF   28,W
+04EF:  BSF    03.5
+04F0:  MOVWF  07
+04F1:  NOP
+....................    i2c_start();  
+04F2:  BCF    03.5
+04F3:  BSF    28.4
+04F4:  MOVF   28,W
+04F5:  BSF    03.5
+04F6:  MOVWF  07
+04F7:  NOP
+04F8:  BCF    03.5
+04F9:  BSF    28.3
+04FA:  MOVF   28,W
+04FB:  BSF    03.5
+04FC:  MOVWF  07
+04FD:  NOP
+04FE:  BCF    03.5
+04FF:  BCF    07.4
+0500:  BCF    28.4
+0501:  MOVF   28,W
+0502:  BSF    03.5
+0503:  MOVWF  07
+0504:  NOP
+0505:  BCF    03.5
+0506:  BCF    07.3
+0507:  BCF    28.3
+0508:  MOVF   28,W
+0509:  BSF    03.5
+050A:  MOVWF  07
+....................    status=i2c_write(0xa0);  
+050B:  MOVLW  A0
+050C:  MOVWF  74
+050D:  BCF    03.5
+050E:  CALL   243
+050F:  MOVF   78,W
+0510:  BTFSC  78.0
+0511:  GOTO   514
+0512:  BCF    71.0
+0513:  GOTO   515
+0514:  BSF    71.0
+....................    while(status==1)  
+....................    {  
+0515:  MOVLW  00
+0516:  BTFSC  71.0
+0517:  MOVLW  01
+0518:  SUBLW  01
+0519:  BTFSS  03.2
+051A:  GOTO   53E
+....................    i2c_start();  
+051B:  BSF    28.4
+051C:  MOVF   28,W
+051D:  BSF    03.5
+051E:  MOVWF  07
+051F:  NOP
+0520:  BCF    03.5
+0521:  BSF    28.3
+0522:  MOVF   28,W
+0523:  BSF    03.5
+0524:  MOVWF  07
+0525:  NOP
+0526:  BCF    03.5
+0527:  BCF    07.4
+0528:  BCF    28.4
+0529:  MOVF   28,W
+052A:  BSF    03.5
+052B:  MOVWF  07
+052C:  NOP
+052D:  BCF    03.5
+052E:  BCF    07.3
+052F:  BCF    28.3
+0530:  MOVF   28,W
+0531:  BSF    03.5
+0532:  MOVWF  07
+....................    status=i2c_write(0xa0);  
+0533:  MOVLW  A0
+0534:  MOVWF  74
+0535:  BCF    03.5
+0536:  CALL   243
+0537:  MOVF   78,W
+0538:  BTFSC  78.0
+0539:  GOTO   53C
+053A:  BCF    71.0
+053B:  GOTO   53D
+053C:  BSF    71.0
+....................    }  
+053D:  GOTO   515
+.................... }  
+....................   
+....................   
+.................... BYTE read_ext_eeprom(long int address) {  
+....................    BYTE data;  
+....................    i2c_start();  
+*
+03C7:  BSF    28.4
+03C8:  MOVF   28,W
+03C9:  BSF    03.5
+03CA:  MOVWF  07
+03CB:  NOP
+03CC:  BCF    03.5
+03CD:  BSF    28.3
+03CE:  MOVF   28,W
+03CF:  BSF    03.5
+03D0:  MOVWF  07
+03D1:  NOP
+03D2:  BCF    03.5
+03D3:  BCF    07.4
+03D4:  BCF    28.4
+03D5:  MOVF   28,W
+03D6:  BSF    03.5
+03D7:  MOVWF  07
+03D8:  NOP
+03D9:  BCF    03.5
+03DA:  BCF    07.3
+03DB:  BCF    28.3
+03DC:  MOVF   28,W
+03DD:  BSF    03.5
+03DE:  MOVWF  07
+....................    i2c_write(0xa0);  
+03DF:  MOVLW  A0
+03E0:  MOVWF  74
+03E1:  BCF    03.5
+03E2:  CALL   243
+....................    i2c_write(address>>8);  
+03E3:  MOVF   55,W
+03E4:  MOVWF  57
+03E5:  CLRF   58
+03E6:  MOVF   55,W
+03E7:  MOVWF  74
+03E8:  CALL   243
+....................    i2c_write(address);  
+03E9:  MOVF   54,W
+03EA:  MOVWF  74
+03EB:  CALL   243
+....................    i2c_start();  
+03EC:  BSF    28.4
+03ED:  MOVF   28,W
+03EE:  BSF    03.5
+03EF:  MOVWF  07
+03F0:  NOP
+03F1:  BCF    03.5
+03F2:  BSF    28.3
+03F3:  MOVF   28,W
+03F4:  BSF    03.5
+03F5:  MOVWF  07
+03F6:  NOP
+03F7:  BCF    03.5
+03F8:  BCF    07.4
+03F9:  BCF    28.4
+03FA:  MOVF   28,W
+03FB:  BSF    03.5
+03FC:  MOVWF  07
+03FD:  NOP
+03FE:  BCF    03.5
+03FF:  BCF    07.3
+0400:  BCF    28.3
+0401:  MOVF   28,W
+0402:  BSF    03.5
+0403:  MOVWF  07
+....................    i2c_write(0xa1);  
+0404:  MOVLW  A1
+0405:  MOVWF  74
+0406:  BCF    03.5
+0407:  CALL   243
+....................    data=i2c_read(0);  
+0408:  CLRF   77
+0409:  GOTO   292
+040A:  MOVF   78,W
+040B:  MOVWF  56
+....................    i2c_stop();  
+040C:  BCF    28.4
+040D:  MOVF   28,W
+040E:  BSF    03.5
+040F:  MOVWF  07
+0410:  NOP
+0411:  BCF    03.5
+0412:  BSF    28.3
+0413:  MOVF   28,W
+0414:  BSF    03.5
+0415:  MOVWF  07
+0416:  BCF    03.5
+0417:  BTFSC  07.3
+0418:  GOTO   41B
+0419:  BSF    03.5
+041A:  GOTO   416
+041B:  NOP
+041C:  NOP
+041D:  NOP
+041E:  NOP
+041F:  BSF    28.4
+0420:  MOVF   28,W
+0421:  BSF    03.5
+0422:  MOVWF  07
+0423:  NOP
+....................    return(data);  
+0424:  BCF    03.5
+0425:  MOVF   56,W
+0426:  MOVWF  78
+.................... }  
+....................  
+....................   
+.................... char valor;  
+.................... signed long valorint;  
+.................... long temp;  //ESSA VARIÁVEL GUARDA ATÉ VALOR DE 16 BITS  
+.................... int i=0;  
+*
+05B8:  CLRF   2E
+.................... int j, k;  
+.................... long angulos[7] = {1500, 1500, 1500, 1500, 1500, 1500, 1500};  
+05B9:  MOVLW  DC
+05BA:  MOVWF  31
+05BB:  MOVLW  05
+05BC:  MOVWF  32
+05BD:  MOVLW  DC
+05BE:  MOVWF  33
+05BF:  MOVLW  05
+05C0:  MOVWF  34
+05C1:  MOVLW  DC
+05C2:  MOVWF  35
+05C3:  MOVLW  05
+05C4:  MOVWF  36
+05C5:  MOVLW  DC
+05C6:  MOVWF  37
+05C7:  MOVLW  05
+05C8:  MOVWF  38
+05C9:  MOVLW  DC
+05CA:  MOVWF  39
+05CB:  MOVLW  05
+05CC:  MOVWF  3A
+05CD:  MOVLW  DC
+05CE:  MOVWF  3B
+05CF:  MOVLW  05
+05D0:  MOVWF  3C
+05D1:  MOVLW  DC
+05D2:  MOVWF  3D
+05D3:  MOVLW  05
+05D4:  MOVWF  3E
+.................... int output = 0b00000000;  
+05D5:  CLRF   3F
+.................... int ang = 0;  
+05D6:  CLRF   40
+.................... long int endereco = 0;  
+05D7:  CLRF   41
+05D8:  CLRF   42
+....................   
+....................   
+.................... WRITE_LONG_EXT_EEPROM(long int n, long data) {  
+....................    int c;  
+....................    for (c = 0; c < 2; c++)  
+*
+049B:  CLRF   6A
+049C:  MOVF   6A,W
+049D:  SUBLW  01
+049E:  BTFSS  03.0
+049F:  GOTO   540
+....................      write_ext_eeprom(c + n, *(&data + c) );  
+04A0:  MOVF   6A,W
+04A1:  ADDWF  66,W
+04A2:  MOVWF  6B
+04A3:  MOVF   67,W
+04A4:  MOVWF  6C
+04A5:  BTFSC  03.0
+04A6:  INCF   6C,F
+04A7:  MOVLW  68
+04A8:  ADDWF  6A,W
+04A9:  MOVWF  04
+04AA:  MOVF   00,W
+04AB:  MOVWF  6D
+04AC:  MOVF   6C,W
+04AD:  MOVWF  6F
+04AE:  MOVF   6B,W
+04AF:  MOVWF  6E
+04B0:  MOVF   6D,W
+04B1:  MOVWF  70
+*
+053E:  INCF   6A,F
+053F:  GOTO   49C
+.................... }  
+....................   
+.................... long READ_LONG_EXT_EEPROM(long int n) {  
+....................    int c;  
+....................    long data;  
+....................    for (c = 0; c < 2; c++)  
+*
+03B4:  CLRF   4E
+03B5:  MOVF   4E,W
+03B6:  SUBLW  01
+03B7:  BTFSS  03.0
+03B8:  GOTO   42D
+....................      *(&data + c) = read_ext_eeprom(c + n);  
+03B9:  MOVLW  4F
+03BA:  ADDWF  4E,W
+03BB:  MOVWF  51
+03BC:  MOVF   4E,W
+03BD:  ADDWF  4C,W
+03BE:  MOVWF  52
+03BF:  MOVF   4D,W
+03C0:  MOVWF  53
+03C1:  BTFSC  03.0
+03C2:  INCF   53,F
+03C3:  MOVF   53,W
+03C4:  MOVWF  55
+03C5:  MOVF   52,W
+03C6:  MOVWF  54
+*
+0427:  MOVF   51,W
+0428:  MOVWF  04
+0429:  MOVF   78,W
+042A:  MOVWF  00
+042B:  INCF   4E,F
+042C:  GOTO   3B5
+....................    return(data);  
+042D:  MOVF   4F,W
+042E:  MOVWF  78
+042F:  MOVF   50,W
+0430:  MOVWF  79
+.................... }  
+....................   
+.................... #int_timer1  
+.................... void trata_t1() {  
+....................    ////////////////// FAZ PULSO ALTO ///////////////////  
+....................    bit_clear(output, i);  
+*
+02DD:  MOVLW  01
+02DE:  MOVWF  77
+02DF:  MOVF   2E,W
+02E0:  MOVWF  78
+02E1:  BTFSC  03.2
+02E2:  GOTO   2E7
+02E3:  BCF    03.0
+02E4:  RLF    77,F
+02E5:  DECFSZ 78,F
+02E6:  GOTO   2E3
+02E7:  MOVF   77,W
+02E8:  XORLW  FF
+02E9:  ANDWF  3F,F
+....................    output_d(output);  
+02EA:  MOVLW  00
+02EB:  BSF    03.5
+02EC:  MOVWF  08
+02ED:  BCF    03.5
+02EE:  MOVF   3F,W
+02EF:  MOVWF  08
+....................    if(i<7){  
+02F0:  MOVF   2E,W
+02F1:  SUBLW  06
+02F2:  BTFSS  03.0
+02F3:  GOTO   334
+....................       if(j==0)  
+02F4:  MOVF   2F,F
+02F5:  BTFSS  03.2
+02F6:  GOTO   2FD
+....................          output_low(PIN_C2);  
+02F7:  BCF    28.2
+02F8:  MOVF   28,W
+02F9:  BSF    03.5
+02FA:  MOVWF  07
+02FB:  BCF    03.5
+02FC:  BCF    07.2
+....................       ++i;  
+02FD:  INCF   2E,F
+....................       bit_set(output, i);  
+02FE:  MOVLW  01
+02FF:  MOVWF  77
+0300:  MOVF   2E,W
+0301:  MOVWF  78
+0302:  BTFSC  03.2
+0303:  GOTO   308
+0304:  BCF    03.0
+0305:  RLF    77,F
+0306:  DECFSZ 78,F
+0307:  GOTO   304
+0308:  MOVF   77,W
+0309:  IORWF  3F,F
+....................       output_d(output);  
+030A:  MOVLW  00
+030B:  BSF    03.5
+030C:  MOVWF  08
+030D:  BCF    03.5
+030E:  MOVF   3F,W
+030F:  MOVWF  08
+....................       set_timer1(65536-angulos[i-1]);  
+0310:  MOVLW  01
+0311:  SUBWF  2E,W
+0312:  MOVWF  77
+0313:  BCF    03.0
+0314:  RLF    77,F
+0315:  MOVF   77,W
+0316:  ADDLW  31
+0317:  MOVWF  04
+0318:  INCF   04,F
+0319:  MOVF   00,W
+031A:  MOVWF  7A
+031B:  DECF   04,F
+031C:  MOVF   00,W
+031D:  SUBLW  00
+031E:  MOVWF  4D
+031F:  CLRF   4E
+0320:  MOVF   7A,W
+0321:  BTFSS  03.0
+0322:  INCFSZ 7A,W
+0323:  SUBWF  4E,F
+0324:  MOVLW  01
+0325:  MOVWF  4F
+0326:  MOVLW  00
+0327:  BTFSS  03.0
+0328:  MOVLW  01
+0329:  SUBWF  4F,F
+032A:  CLRF   50
+032B:  MOVLW  00
+032C:  BTFSS  03.0
+032D:  MOVLW  01
+032E:  SUBWF  50,F
+032F:  MOVF   4E,W
+0330:  MOVWF  0F
+0331:  MOVF   4D,W
+0332:  MOVWF  0E
+....................    }else{  
+0333:  GOTO   435
+....................       ///////////// FAZ DELAY DE TEMPO BAIXO //////////////  
+....................       i=0;  
+0334:  CLRF   2E
+....................       output=0;  
+0335:  CLRF   3F
+....................       output_d(output);  
+0336:  MOVLW  00
+0337:  BSF    03.5
+0338:  MOVWF  08
+0339:  BCF    03.5
+033A:  MOVF   3F,W
+033B:  MOVWF  08
+....................       set_timer1(55536);  
+033C:  MOVLW  D8
+033D:  MOVWF  0F
+033E:  MOVLW  F0
+033F:  MOVWF  0E
+....................       if(!input(PIN_B1)){  
+0340:  BSF    03.5
+0341:  BSF    06.1
+0342:  BCF    03.5
+0343:  BTFSC  06.1
+0344:  GOTO   435
+....................          ////////////////// FAZ AQUISIÇÃO ////////////////////  
+....................          for (k = 0; k < 6; ++k){  
+0345:  CLRF   30
+0346:  MOVF   30,W
+0347:  SUBLW  05
+0348:  BTFSS  03.0
+0349:  GOTO   3B0
+....................             set_adc_channel( k );  
+034A:  RLF    30,W
+034B:  MOVWF  77
+034C:  RLF    77,F
+034D:  RLF    77,F
+034E:  MOVLW  F8
+034F:  ANDWF  77,F
+0350:  MOVF   1F,W
+0351:  ANDLW  C7
+0352:  IORWF  77,W
+0353:  MOVWF  1F
+....................             delay_us(20);  
+0354:  MOVLW  06
+0355:  MOVWF  77
+0356:  DECFSZ 77,F
+0357:  GOTO   356
+0358:  NOP
+....................             temp = read_adc();  
+0359:  BSF    1F.2
+035A:  BTFSC  1F.2
+035B:  GOTO   35A
+035C:  BSF    03.5
+035D:  MOVF   1E,W
+035E:  BCF    03.5
+035F:  MOVWF  2C
+0360:  MOVF   1E,W
+0361:  MOVWF  2D
+....................             //angulos[k] = temp*2+500;  
+....................             angulos[k] = (float)temp*1.76+600;  
+0362:  BCF    03.0
+0363:  RLF    30,W
+0364:  ADDLW  31
+0365:  MOVWF  04
+0366:  MOVF   2D,W
+0367:  MOVWF  67
+0368:  MOVF   2C,W
+0369:  MOVWF  66
+036A:  CALL   03C
+036B:  MOVF   77,W
+036C:  MOVWF  4D
+036D:  MOVF   78,W
+036E:  MOVWF  4E
+036F:  MOVF   79,W
+0370:  MOVWF  4F
+0371:  MOVF   7A,W
+0372:  MOVWF  50
+0373:  MOVWF  6D
+0374:  MOVF   79,W
+0375:  MOVWF  6C
+0376:  MOVF   78,W
+0377:  MOVWF  6B
+0378:  MOVF   77,W
+0379:  MOVWF  6A
+037A:  MOVLW  AE
+037B:  MOVWF  71
+037C:  MOVLW  47
+037D:  MOVWF  70
+037E:  MOVLW  61
+037F:  MOVWF  6F
+0380:  MOVLW  7F
+0381:  MOVWF  6E
+0382:  CALL   05A
+0383:  MOVF   77,W
+0384:  MOVWF  51
+0385:  MOVF   78,W
+0386:  MOVWF  52
+0387:  MOVF   79,W
+0388:  MOVWF  53
+0389:  MOVF   7A,W
+038A:  MOVWF  54
+038B:  MOVF   04,W
+038C:  MOVWF  55
+038D:  BCF    03.1
+038E:  MOVF   7A,W
+038F:  MOVWF  71
+0390:  MOVF   79,W
+0391:  MOVWF  70
+0392:  MOVF   78,W
+0393:  MOVWF  6F
+0394:  MOVF   77,W
+0395:  MOVWF  6E
+0396:  CLRF   75
+0397:  CLRF   74
+0398:  MOVLW  16
+0399:  MOVWF  73
+039A:  MOVLW  88
+039B:  MOVWF  72
+039C:  CALL   0D0
+039D:  MOVF   55,W
+039E:  MOVWF  04
+039F:  MOVF   7A,W
+03A0:  MOVWF  71
+03A1:  MOVF   79,W
+03A2:  MOVWF  70
+03A3:  MOVF   78,W
+03A4:  MOVWF  6F
+03A5:  MOVF   77,W
+03A6:  MOVWF  6E
+03A7:  CALL   223
+03A8:  INCF   04,F
+03A9:  MOVF   79,W
+03AA:  MOVWF  00
+03AB:  DECF   04,F
+03AC:  MOVF   78,W
+03AD:  MOVWF  00
+....................          }  
+03AE:  INCF   30,F
+03AF:  GOTO   346
+....................          angulos[6] = READ_LONG_EXT_EEPROM(endereco);  
+03B0:  MOVF   42,W
+03B1:  MOVWF  4D
+03B2:  MOVF   41,W
+03B3:  MOVWF  4C
+*
+0431:  MOVF   79,W
+0432:  MOVWF  3E
+0433:  MOVF   78,W
+0434:  MOVWF  3D
+....................          /*if(kbhit()){  
+....................             k = getc();  
+....................             ang = (signed long)(angulos[k]-1500)*2/15+120;  
+....................             putc(ang);  
+....................          }*/  
+....................       }  
+....................    }  
+.................... }  
+....................   
+0435:  BCF    0C.0
+0436:  BCF    0A.3
+0437:  BCF    0A.4
+0438:  GOTO   023
+.................... #INT_EXT  
+.................... void trata_botao() {  
+....................    set_adc_channel( 6 );  
+0439:  MOVLW  30
+043A:  MOVWF  78
+043B:  MOVF   1F,W
+043C:  ANDLW  C7
+043D:  IORWF  78,W
+043E:  MOVWF  1F
+....................    delay_us(20);  
+043F:  MOVLW  06
+0440:  MOVWF  77
+0441:  DECFSZ 77,F
+0442:  GOTO   441
+0443:  NOP
+....................    temp = read_adc();  
+0444:  BSF    1F.2
+0445:  BTFSC  1F.2
+0446:  GOTO   445
+0447:  BSF    03.5
+0448:  MOVF   1E,W
+0449:  BCF    03.5
+044A:  MOVWF  2C
+044B:  MOVF   1E,W
+044C:  MOVWF  2D
+....................    temp = (float)temp*1.76+600;  
+044D:  MOVF   2D,W
+044E:  MOVWF  67
+044F:  MOVF   2C,W
+0450:  MOVWF  66
+0451:  CALL   03C
+0452:  MOVF   77,W
+0453:  MOVWF  66
+0454:  MOVF   78,W
+0455:  MOVWF  67
+0456:  MOVF   79,W
+0457:  MOVWF  68
+0458:  MOVF   7A,W
+0459:  MOVWF  69
+045A:  MOVWF  6D
+045B:  MOVF   79,W
+045C:  MOVWF  6C
+045D:  MOVF   78,W
+045E:  MOVWF  6B
+045F:  MOVF   77,W
+0460:  MOVWF  6A
+0461:  MOVLW  AE
+0462:  MOVWF  71
+0463:  MOVLW  47
+0464:  MOVWF  70
+0465:  MOVLW  61
+0466:  MOVWF  6F
+0467:  MOVLW  7F
+0468:  MOVWF  6E
+0469:  CALL   05A
+046A:  MOVF   77,W
+046B:  MOVWF  6A
+046C:  MOVF   78,W
+046D:  MOVWF  6B
+046E:  MOVF   79,W
+046F:  MOVWF  6C
+0470:  MOVF   7A,W
+0471:  MOVWF  6D
+0472:  BCF    03.1
+0473:  MOVF   7A,W
+0474:  MOVWF  71
+0475:  MOVF   79,W
+0476:  MOVWF  70
+0477:  MOVF   78,W
+0478:  MOVWF  6F
+0479:  MOVF   77,W
+047A:  MOVWF  6E
+047B:  CLRF   75
+047C:  CLRF   74
+047D:  MOVLW  16
+047E:  MOVWF  73
+047F:  MOVLW  88
+0480:  MOVWF  72
+0481:  CALL   0D0
+0482:  MOVF   7A,W
+0483:  MOVWF  71
+0484:  MOVF   79,W
+0485:  MOVWF  70
+0486:  MOVF   78,W
+0487:  MOVWF  6F
+0488:  MOVF   77,W
+0489:  MOVWF  6E
+048A:  CALL   223
+048B:  MOVF   79,W
+048C:  MOVWF  2D
+048D:  MOVF   78,W
+048E:  MOVWF  2C
+....................    endereco+=2;  
+048F:  MOVLW  02
+0490:  ADDWF  41,F
+0491:  BTFSC  03.0
+0492:  INCF   42,F
+....................    WRITE_LONG_EXT_EEPROM(endereco, temp);  
+0493:  MOVF   42,W
+0494:  MOVWF  67
+0495:  MOVF   41,W
+0496:  MOVWF  66
+0497:  MOVF   2D,W
+0498:  MOVWF  69
+0499:  MOVF   2C,W
+049A:  MOVWF  68
+.................... }  
+....................   
+....................   
+....................   
+*
+0540:  BCF    0B.1
+0541:  BCF    0A.3
+0542:  BCF    0A.4
+0543:  GOTO   023
+.................... void main() {  
+....................    set_tris_a(0b11111111);  
+*
+05A3:  CLRF   04
+05A4:  MOVLW  1F
+05A5:  ANDWF  03,F
+05A6:  BSF    03.5
+05A7:  BSF    1F.0
+05A8:  BSF    1F.1
+05A9:  BSF    1F.2
+05AA:  BCF    1F.3
+05AB:  MOVLW  07
+05AC:  BCF    03.5
+05AD:  MOVWF  1F
+05AE:  MOVLW  0C
+05AF:  BSF    03.5
+05B0:  MOVWF  19
+05B1:  MOVLW  26
+05B2:  MOVWF  18
+05B3:  MOVLW  90
+05B4:  BCF    03.5
+05B5:  MOVWF  18
+*
+05D9:  MOVLW  FF
+05DA:  BSF    03.5
+05DB:  MOVWF  05
+....................    set_tris_d(0b00000000);  
+05DC:  MOVLW  00
+05DD:  MOVWF  08
+....................    setup_port_a( ALL_ANALOG );  
+05DE:  BCF    1F.0
+05DF:  BCF    1F.1
+05E0:  BCF    1F.2
+05E1:  BCF    1F.3
+....................    setup_adc( ADC_CLOCK_DIV_16 );  
+05E2:  BSF    1F.6
+05E3:  BCF    03.5
+05E4:  BSF    1F.6
+05E5:  BCF    1F.7
+05E6:  BSF    03.5
+05E7:  BSF    1F.7
+05E8:  BCF    03.5
+05E9:  BSF    1F.0
+....................   
+....................    setup_timer_1 ( T1_INTERNAL | T1_DIV_BY_1 );  
+05EA:  MOVLW  85
+05EB:  MOVWF  10
+....................    enable_interrupts (global);  
+05EC:  MOVLW  C0
+05ED:  IORWF  0B,F
+....................    init_ext_eeprom();  
+05EE:  GOTO   544
+....................    enable_interrupts(INT_EXT);  
+05EF:  BSF    0B.4
+....................    enable_interrupts (int_timer1);  
+05F0:  BSF    03.5
+05F1:  BSF    0C.0
+....................    set_timer1(0);  
+05F2:  BCF    03.5
+05F3:  CLRF   0F
+05F4:  CLRF   0E
+....................    while (true){  
+....................       output_high(PIN_C2);  
+05F5:  BCF    28.2
+05F6:  MOVF   28,W
+05F7:  BSF    03.5
+05F8:  MOVWF  07
+05F9:  BCF    03.5
+05FA:  BSF    07.2
+....................       if(input(PIN_B1)){  
+05FB:  BSF    03.5
+05FC:  BSF    06.1
+05FD:  BCF    03.5
+05FE:  BTFSS  06.1
+05FF:  GOTO   63D
+....................          ////////////// FAZ COMUNICAÇÃO SERIAL ///////////////  
+....................          for (j = 0; j < 7; ++j){  
+0600:  CLRF   2F
+0601:  MOVF   2F,W
+0602:  SUBLW  06
+0603:  BTFSS  03.0
+0604:  GOTO   63D
+....................             putc(j+1);  
+0605:  MOVLW  01
+0606:  ADDWF  2F,W
+0607:  MOVWF  43
+0608:  MOVF   43,W
+0609:  BTFSS  0C.4
+060A:  GOTO   609
+060B:  MOVWF  19
+....................             valorint = getc();  
+060C:  BTFSS  0C.5
+060D:  GOTO   60C
+060E:  MOVF   1A,W
+060F:  CLRF   7A
+0610:  MOVWF  2A
+0611:  MOVF   7A,W
+0612:  MOVWF  2B
+....................             valorint = valorint - 100;  
+0613:  MOVLW  64
+0614:  SUBWF  2A,F
+0615:  MOVLW  00
+0616:  BTFSS  03.0
+0617:  MOVLW  01
+0618:  SUBWF  2B,F
+....................             angulos[j] = valorint*15/2 + 1500;  
+0619:  BCF    03.0
+061A:  RLF    2F,W
+061B:  ADDLW  31
+061C:  MOVWF  04
+061D:  MOVF   2B,W
+061E:  MOVWF  45
+061F:  MOVF   2A,W
+0620:  MOVWF  44
+0621:  CLRF   47
+0622:  MOVLW  0F
+0623:  MOVWF  46
+0624:  GOTO   54B
+0625:  MOVF   79,W
+0626:  MOVWF  45
+0627:  MOVF   78,W
+0628:  MOVWF  44
+0629:  MOVF   79,W
+062A:  MOVWF  47
+062B:  MOVF   78,W
+062C:  MOVWF  46
+062D:  CLRF   49
+062E:  MOVLW  02
+062F:  MOVWF  48
+0630:  GOTO   562
+0631:  MOVLW  DC
+0632:  ADDWF  78,W
+0633:  MOVWF  00
+0634:  INCF   04,F
+0635:  MOVF   79,W
+0636:  MOVWF  00
+0637:  BTFSC  03.0
+0638:  INCF   00,F
+0639:  MOVLW  05
+063A:  ADDWF  00,F
+....................          }  
+063B:  INCF   2F,F
+063C:  GOTO   601
+....................       }  
+....................    }  
+063D:  GOTO   5F5
+.................... }  
+....................  
+063E:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F32   HS NOWDT PUT NODEBUG NOPROTECT NOBROWNOUT NOLVP NOCPD NOWRT

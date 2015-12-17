@@ -1,0 +1,154 @@
+008     PSP_DATA
+015     CCP_1_LOW
+015-016 CCP_1
+016     CCP_1_HIGH
+01B-01C CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     @INTERRUPT_AREA
+028     @TRIS_C
+029     valor
+02A-02B valorint
+02C-02D temp
+02E     i
+02F     j
+030     k
+031-03E angulos
+03F     output
+040     ang
+041-042 endereco
+043     main.@SCRATCH
+044-045 @MUL1616.P1
+044     main.@SCRATCH
+045     main.@SCRATCH
+046-047 @DIVS1616.P1
+046-047 @MUL1616.P2
+046     main.@SCRATCH
+048-049 @DIVS1616.P1
+048     @MUL1616.@SCRATCH
+04A     @DIVS1616.@SCRATCH
+04B     @DIVS1616.@SCRATCH
+04C-04D READ_LONG_EXT_EEPROM.n
+04C     trata_t1.@SCRATCH
+04D     trata_t1.@SCRATCH
+04E     READ_LONG_EXT_EEPROM.c
+04E     trata_t1.@SCRATCH
+04F-050 READ_LONG_EXT_EEPROM.data
+04F     trata_t1.@SCRATCH
+050     trata_t1.@SCRATCH
+051     READ_LONG_EXT_EEPROM.@SCRATCH
+051     trata_t1.@SCRATCH
+052     READ_LONG_EXT_EEPROM.@SCRATCH
+052     trata_t1.@SCRATCH
+053     READ_LONG_EXT_EEPROM.@SCRATCH
+053     trata_t1.@SCRATCH
+054-055 read_ext_eeprom.address
+054     trata_t1.@SCRATCH
+055     trata_t1.@SCRATCH
+056     read_ext_eeprom.data
+057     @I2C_READ_1_59_60_4000000.P1
+057     read_ext_eeprom.@SCRATCH
+058     @I2C_READ_1_59_60_4000000.@SCRATCH
+058     read_ext_eeprom.@SCRATCH
+059     @I2C_READ_1_59_60_4000000.@SCRATCH
+066-067 WRITE_LONG_EXT_EEPROM.n
+066-067 @ITOF.P1
+066     trata_botao.@SCRATCH
+067     trata_botao.@SCRATCH
+068-069 WRITE_LONG_EXT_EEPROM.data
+068     trata_botao.@SCRATCH
+069     trata_botao.@SCRATCH
+06A     WRITE_LONG_EXT_EEPROM.c
+06A-06D @MULFF.P1
+06A     trata_botao.@SCRATCH
+06B     WRITE_LONG_EXT_EEPROM.@SCRATCH
+06B     trata_botao.@SCRATCH
+06C     WRITE_LONG_EXT_EEPROM.@SCRATCH
+06C     trata_botao.@SCRATCH
+06D     WRITE_LONG_EXT_EEPROM.@SCRATCH
+06D     trata_botao.@SCRATCH
+06E-06F write_ext_eeprom.address
+06E-071 @MULFF.P1
+06E-071 @ADDFF.P2
+06E-071 @SFTOI.P3
+070     write_ext_eeprom.data
+071.0   write_ext_eeprom.status
+072-075 @ADDFF.P1
+072     write_ext_eeprom.@SCRATCH
+072     @MULFF.@SCRATCH
+073     write_ext_eeprom.@SCRATCH
+073     @MULFF.@SCRATCH
+074     @I2C_WRITE_1_59_60_4000000.P1
+074     @MULFF.@SCRATCH
+075     @MULFF.@SCRATCH
+076     @MULFF.@SCRATCH
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+07B     @SCRATCH
+07F     @INTERRUPT_AREA
+09C.6   C1OUT
+09C.7   C2OUT
+0A0     @ADDFF.@SCRATCH
+0A1     @ADDFF.@SCRATCH
+0A2     @ADDFF.@SCRATCH
+0A3     @ADDFF.@SCRATCH
+0A4     @ADDFF.@SCRATCH
+0A5     @ADDFF.@SCRATCH
+0A6     @ADDFF.@SCRATCH
+0A7     @ADDFF.@SCRATCH
+0FF     @INTERRUPT_AREA
+17F     @INTERRUPT_AREA
+1FF     @INTERRUPT_AREA
+27F     @INTERRUPT_AREA
+2FF     @INTERRUPT_AREA
+37F     @INTERRUPT_AREA
+3FF     @INTERRUPT_AREA
+
+0292  @I2C_READ_1_59_60_4000000
+0243  @I2C_WRITE_1_59_60_4000000
+0544  init_ext_eeprom
+04B2  write_ext_eeprom
+03C7  read_ext_eeprom
+049B  WRITE_LONG_EXT_EEPROM
+03B4  READ_LONG_EXT_EEPROM
+02DD  trata_t1
+003C  @ITOF
+005A  @MULFF
+00D0  @ADDFF
+0223  @SFTOI
+0439  trata_botao
+05A3  main
+054B  @MUL1616
+0562  @DIVS1616
+05A3  @cinit
+
+Project Files:
+    D:\Meus documentos\Renato ELT\OpenGL\ManipXP_serial\Serial_PIC\pic_manipulador_adc_memo_serial.c
+    D:\Arquivos de programas\PICC\devices\16f877a.h
+    D:\Arquivos de programas\PICC\drivers\24256.c
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   8
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: 1,8,16
+
+Output Files:
+    Errors:      D:\Meus documentos\Renato ELT\OpenGL\ManipXP_serial\Serial_PIC\pic_manipulador_adc_memo_serial.err
+    INHX8:       D:\Meus documentos\Renato ELT\OpenGL\ManipXP_serial\Serial_PIC\pic_manipulador_adc_memo_serial.HEX
+    Symbols:     D:\Meus documentos\Renato ELT\OpenGL\ManipXP_serial\Serial_PIC\pic_manipulador_adc_memo_serial.SYM
+    List:        D:\Meus documentos\Renato ELT\OpenGL\ManipXP_serial\Serial_PIC\pic_manipulador_adc_memo_serial.LST
+    Debug/COFF:  D:\Meus documentos\Renato ELT\OpenGL\ManipXP_serial\Serial_PIC\pic_manipulador_adc_memo_serial.cof
+    Call Tree:   D:\Meus documentos\Renato ELT\OpenGL\ManipXP_serial\Serial_PIC\pic_manipulador_adc_memo_serial.tre
+    Statistics:  D:\Meus documentos\Renato ELT\OpenGL\ManipXP_serial\Serial_PIC\pic_manipulador_adc_memo_serial.sta

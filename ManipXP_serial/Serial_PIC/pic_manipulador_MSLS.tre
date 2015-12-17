@@ -1,0 +1,11 @@
+ÀÄpic_manipulador_MSLS
+   ÃÄmain  0/136  Ram=3
+   ³  ÀÄ??0??
+   ÀÄtrata_t1  0/344  Ram=10
+      ÃÄ@ITOF  0/32  Ram=2
+      ÃÄ@MULFF  0/120  Ram=13
+      ÃÄ@ADDFF  0/321  Ram=16
+      ÃÄ@SFTOI  0/34  Ram=4
+      ÀÄtrata_rs232  (Inline)  Ram=10
+         ÃÄ@MUL1616  0/23  Ram=5
+         ÀÄ@DIVS1616  0/65  Ram=6

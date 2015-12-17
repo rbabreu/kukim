@@ -1,0 +1,12 @@
+ÀÄpic_manipulador_INT
+   ÃÄMAIN  0/317  Ram=10
+   ³  ÃÄ??0??
+   ³  ÃÄ@MUL1616  0/21  Ram=5
+   ³  ÃÄ@DIVS1616  0/62  Ram=6
+   ³  ÃÄ@MUL1616  0/21  Ram=5
+   ³  ÀÄ@DIVS1616  0/62  Ram=6
+   ÀÄtrata_t1  0/274  Ram=12
+      ÃÄ@ITOF  0/31  Ram=2
+      ÃÄ@MULFF  0/119  Ram=13
+      ÃÄ@ADDFF  0/323  Ram=16
+      ÀÄ@SFTOI  0/33  Ram=4

@@ -1,0 +1,45 @@
+LABCENTER PROTEUS TOOL INFORMATION FILE
+=======================================
+
+In case of difficulty, please e-mail support@labcenter.co.uk
+
+Tool set up for Proteus layout 'adc_memo_serial_rout.LYT'.
+CADCAM generated at 14:02:09 on terça-feira, 24 de abril de 2007.
+
+File List
+---------
+Bottom Copper           : adc_memo_serial_rout - CADCAM Bottom Copper.TXT
+Top Silk Screen         : adc_memo_serial_rout - CADCAM Top Silk Screen.TXT
+Bottom Solder Resist    : adc_memo_serial_rout - CADCAM Bottom Solder Resist.TXT
+Top SMT Paste Mask      : adc_memo_serial_rout - CADCAM Top SMT Paste Mask.TXT
+Drill                   : adc_memo_serial_rout - CADCAM Drill.TXT
+
+Photoplotter Setup
+------------------
+Format: RS274X, ASCII, 2.4, imperial, absolute, eob=*, LZO
+Notes:  D=Diameter, S=Side, W=Width, H=Height
+
+D10	SQUARE	S=50th                                      FLASH
+D11	CIRCLE	D=50th                                      FLASH
+D12	SQUARE	S=80th                                      FLASH
+D13	CIRCLE	D=100th                                     FLASH
+D14	CIRCLE	D=80th                                      FLASH
+D15	CIRCLE	D=70th                                      FLASH
+D16	CIRCLE	D=90th                                      FLASH
+D17	CIRCLE	D=8th                                       DRAW
+D18	SMT	W=70th                H=70th                FLASH
+D19	SMT	W=100th               H=100th               FLASH
+D70	CIRCLE	D=130th                                     FLASH
+D71	CIRCLE	D=110th                                     FLASH
+
+NC Drill Setup
+--------------
+Format: ASCII, 2.4, imperial, absolute, eob=<CR><LF>, no zero suppression.
+Notes:  Tool sizes are diameters. Layer sets are in brackets - 0=TOP, 15=BOTTOM, 1-14=INNER.
+
+T01	30th (0-15)
+T02	40th (0-15)
+T03	45th (0-15)
+
+
+[END OF FILE]

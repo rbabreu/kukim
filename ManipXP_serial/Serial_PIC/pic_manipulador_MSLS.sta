@@ -1,0 +1,37 @@
+
+ROM used: 1128 (14%)
+          1128 (14%) including unused fragments
+
+          3 Average locations per line
+          23 Average locations per statement
+
+RAM used: 44 (25%) at main() level
+          70 (40%) worst case
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   92    50 100  D:\Meus documentos\Renato ELT\OpenGL\ManipXP_serial\Serial_PIC\pic_manipulador_MSLS.c
+  304     0   0  D:\Arquivos de programas\PICC\devices\16f877a.h
+----- -----
+  792   100 Total
+
+Page ROM  %  RAM  Functions:
+---- --- --- ---  ----------
+0     23   2   5  @MUL1616
+0     65   6   6  @DIVS1616
+0    344  30  10  trata_t1
+0     32   3   2  @ITOF
+0    120  11  13  @MULFF
+0    321  28  16  @ADDFF
+0     34   3   4  @SFTOI
+0    136  12   3  main
+
+ Segment   Used  Free
+---------  ----  ----
+00000-00003     4  0
+00004-00034    49  0
+00035-007FF  1075  920
+00800-00FFF     0  2048
+01000-017FF     0  2048
+01800-01FFF     0  2048
+

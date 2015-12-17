@@ -1,0 +1,31 @@
+ÀÄpic_manipulador_adc_memo_serial
+   ÃÄmain  0/156  Ram=4
+   ³  ÃÄ??0??
+   ³  ÃÄinit_ext_eeprom  0/7  Ram=0
+   ³  ÃÄ@MUL1616  0/23  Ram=5
+   ³  ÀÄ@DIVS1616  0/65  Ram=6
+   ÃÄtrata_t1  0/348  Ram=10
+   ³  ÃÄ@ITOF  0/30  Ram=2
+   ³  ÃÄ@MULFF  0/118  Ram=13
+   ³  ÃÄ@ADDFF  0/339  Ram=16
+   ³  ÃÄ@SFTOI  0/32  Ram=4
+   ³  ÀÄREAD_LONG_EXT_EEPROM  (Inline)  Ram=8
+   ³     ÀÄread_ext_eeprom  (Inline)  Ram=5
+   ³        ÃÄ@I2C_WRITE_1_59_60_4000000  0/79  Ram=1
+   ³        ÃÄ@I2C_WRITE_1_59_60_4000000  0/79  Ram=1
+   ³        ÃÄ@I2C_WRITE_1_59_60_4000000  0/79  Ram=1
+   ³        ÃÄ@I2C_WRITE_1_59_60_4000000  0/79  Ram=1
+   ³        ÀÄ@I2C_READ_1_59_60_4000000  0/75  Ram=3
+   ÀÄtrata_botao  0/267  Ram=8
+      ÃÄ@ITOF  0/30  Ram=2
+      ÃÄ@MULFF  0/118  Ram=13
+      ÃÄ@ADDFF  0/339  Ram=16
+      ÃÄ@SFTOI  0/32  Ram=4
+      ÀÄWRITE_LONG_EXT_EEPROM  (Inline)  Ram=8
+         ÀÄwrite_ext_eeprom  (Inline)  Ram=6
+            ÃÄ@I2C_WRITE_1_59_60_4000000  0/79  Ram=1
+            ÃÄ@I2C_WRITE_1_59_60_4000000  0/79  Ram=1
+            ÃÄ@I2C_WRITE_1_59_60_4000000  0/79  Ram=1
+            ÃÄ@I2C_WRITE_1_59_60_4000000  0/79  Ram=1
+            ÃÄ@I2C_WRITE_1_59_60_4000000  0/79  Ram=1
+            ÀÄ@I2C_WRITE_1_59_60_4000000  0/79  Ram=1
